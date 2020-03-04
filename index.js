@@ -4,12 +4,14 @@ authorizeButton.onclick = () => gapi.auth2.getAuthInstance().signIn()
 var signoutButton = document.getElementById('signout_button')
 signoutButton.onclick = () => gapi.auth2.getAuthInstance().signOut()
 
+// load the api
 gapi.load('client:auth2', () => gapi.client.init({
     apiKey: 'AIzaSyBD9wsKIBZnvoOepvj901KJGfaf-mD_fjc',
     clientId: '706334111476-5e49epa87ltl3sg892b9omiplu26dep1.apps.googleusercontent.com',
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
     scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
 }).then(() => {
+    // a callback for when the sign-in state changes.
     let onSignInStatusChanges = isSignedIn => isSignedIn ? onSignin() : onSignout()
 
     // Listen for sign-in state changes.
@@ -17,7 +19,7 @@ gapi.load('client:auth2', () => gapi.client.init({
 
     // Handle the initial sign-in state.
     onSignInStatusChanges(gapi.auth2.getAuthInstance().isSignedIn.get())
-}).catch(error => console.error))
+}).catch(console.error))
 
 let isSignedIn = () => gapi.auth2.getAuthInstance().isSignedIn.get()
 

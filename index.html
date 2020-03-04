@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Google Sheets API Quickstart</title>
+        <meta charset="utf-8" />
+    </head>
 
-<head>
-    <title>Google Sheets API Quickstart</title>
-    <meta charset="utf-8" />
-</head>
+    <body>
+        <p>Google Sheets API Quickstart</p>
 
-<body>
-    <p>Google Sheets API Quickstart</p>
+        <!--Add buttons to initiate auth sequence and sign out-->
+        <div id="login_buttons">
+            <button id="authorize_button" style="display: none">Authorize</button>
+            <button id="signout_button" style="display: none">Sign Out</button>
+        </div>
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none">Authorize</button>
-    <button id="signout_button" style="display: none">Sign Out</button>
+        <button id="submit_button" style="display: none">Do stuff</button>
 
-    <button id="submit_button" style="display: none">Do stuff</button>
-
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="index.js"></script>
-    
-    <!-- onload="this.onload=function(){}; handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()" -->
-</body>
-
+        <script SameSite="None" src="https://apis.google.com/js/api.js"></script>
+        <script defer src="index.js"></script>
+    </body>
 </html>
