@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Google Sheets API Quickstart</title>
+        <title>Scanner</title>
         <meta charset="utf-8" />
+
+        <!-- import scripts -->
+        <script crossorigin="anonymous" src="https://apis.google.com/js/api.js"></script>
+        <script crossorigin="anonymous" src="lib/qr.js"></script>
     </head>
-
     <body>
-        <p>Google Sheets API Quickstart</p>
-
         <!--Add buttons to initiate auth sequence and sign out-->
         <div id="login_buttons">
             <button id="authorize_button" style="display: none">Authorize</button>
             <button id="signout_button" style="display: none">Sign Out</button>
         </div>
 
-        <button id="submit_button" style="display: none">Do stuff</button>
+        <!-- shows ther camera view and add hiddent canvas for qr scanner-->
+        <video id="stream" width="320" height="240"></video>
+        <canvas id="canvas" style="display: none;"></canvas>
 
-        <script SameSite="None" src="https://apis.google.com/js/api.js"></script>
+        <!-- wait until everything else is loaded then load the logging script -->
         <script defer src="index.js"></script>
     </body>
 </html>
