@@ -1,3 +1,11 @@
+// set up the sign in button
+var authorizeButton = document.getElementById('authorize_button')
+authorizeButton.onclick = () => gapi.auth2.getAuthInstance().signIn()
+
+// set up the sign out button
+var signoutButton = document.getElementById('signout_button')
+signoutButton.onclick = () => gapi.auth2.getAuthInstance().signOut()
+
 // load the api
 gapi.load('client:auth2', () => gapi.client.init({
     apiKey: 'AIzaSyBD9wsKIBZnvoOepvj901KJGfaf-mD_fjc',
@@ -5,14 +13,6 @@ gapi.load('client:auth2', () => gapi.client.init({
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
     scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
 }).then(() => {
-    // set up the sign in button
-    var authorizeButton = document.getElementById('authorize_button')
-    authorizeButton.onclick = () => gapi.auth2.getAuthInstance().signIn()
-
-    // set up the sign out button
-    var signoutButton = document.getElementById('signout_button')
-    signoutButton.onclick = () => gapi.auth2.getAuthInstance().signOut()
-
     // a callback for when the sign-in state changes.
     let onSignInStatusChanges = isSignedIn => isSignedIn ? onSignin() : onSignout()
 
@@ -24,7 +24,7 @@ gapi.load('client:auth2', () => gapi.client.init({
 }).catch(console.error))
 
 // get wether were signed in or not
-let isSignedIn = () => gapi.auth2.getAuthInstance().isSignedIn.get()
+let isSignedIn = false
 
 // get refrence to elements needed for camera
 const stream = document.getElementById("stream")
@@ -68,7 +68,7 @@ const scanInterval = 10
 // scan the image repeatidly
 setInterval(() => {
     // we dont even want to scan if were not logged in
-    if (!isSignedIn()) return
+    if (!isSignedIn) return
 
     // get the data from the scan
     let data = scan()
@@ -80,26 +80,41 @@ let games = []
 
 // what should we do when we get a successful qr code?
 function onData(data) {
-    
+    // the game data is stored as csv so lets split it apart
+    let game = data.split(",")
+
+    // 
+    uploadMatch(game)
+}
+
+function getGameRow(game) {
+    return 0
 }
 
 // what should we do when we sign in
 function onSignin() {
+    isSignedIn = true
+
     authorizeButton.style.display = 'none'
     signoutButton.style.display = 'block'
 }
 
 // what should we do when we sign out
 function onSignout() {
+    isSignedIn = false
+    
     authorizeButton.style.display = 'block'
     signoutButton.style.display = 'none'
 }
 
 // upload a match to sheets
-function uploadMatch() {
+function uploadMatch(game) {
+    let collumn = getGameRow(game)
+    let start = "A"
+    let end = String.fromCharCode(start.charCodeAt(0) + game.length)
     return gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: "1Nc7NNZmOd75HYn5kJ6SyO9mh1Uxw6zCXJV_UwfEhpSo",
-        range: 'Sheet1!A1:A1',
+        range: `Sheet1!${start}${collumn}:${end}${collumn}`,
         valueInputOption: "USER_ENTERED",
         resource: {values: [["blablabla7"]]}
     })
