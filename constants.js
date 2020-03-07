@@ -12,7 +12,8 @@ const startRow = "A"
 
 // identification variable for google api
 // see: https://developers.google.com/sheets/api/quickstart/js
-// node: make sure the apikey is allowed to run on site (team5419.github.org/*)
+// node: make sure bore are allowed to run on site (team5419.github.org)
 // you can do that at https://console.developers.google.com/apis/credentials
+// you must create a new client id if its not configure to work for web application
 const apiKey = "AIzaSyBD9wsKIBZnvoOepvj901KJGfaf-mD_fjc"
-const clientId = "706334111476-5e49epa87ltl3sg892b9omiplu26dep1.apps.googleusercontent.com"
+const clientId = "706334111476-a0796rgunk4uahlnd311aqipi31f9mm0.apps.googleusercontent.com"
