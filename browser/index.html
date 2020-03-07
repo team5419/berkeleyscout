@@ -4,14 +4,17 @@
         <title>Scanner</title>
         <meta charset="utf-8" />
 
-        <!-- import scripts -->
+        <!-- import libraries were gonna use -->
         <script crossorigin="anonymous" src="https://apis.google.com/js/api.js"></script>
         <script crossorigin="anonymous" src="lib/qr.js"></script>
+
+        <!-- load the configuration for sheets and qr -->
+        <script src="constants.js"></script>
     </head>
     <body>
         <!--Add buttons to initiate auth sequence and sign out-->
         <div id="login_buttons">
-            <button id="authorize_button" style="display: none">Authorize</button>
+            <button id="signin_button" style="display: none">Sign In</button>
             <button id="signout_button" style="display: none">Sign Out</button>
         </div>
 
@@ -27,6 +30,7 @@
         </table>
 
         <!-- wait until everything else is loaded then load the logging script -->
+        <!-- this makes sure that the google api is ready for are code -->
         <script async defer src="index.js"></script>
     </body>
 </html>
