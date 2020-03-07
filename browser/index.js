@@ -72,23 +72,34 @@ setInterval(() => {
 
     // get the data from the scan
     let data = scan()
-    if (data) onData(data)
+
+    // nothing was found, lets bounce
+    if (data == undefined || data == null) return
+
+    // weve allready scaned this data, is no good
+    if ( codes.has(data) ) return
+
+    // add it to the list of codes to make sure we dont scan it again
+    codes.add(data)
+
+    // yay! we actually have data!
+    onData(data)
 }, scanInterval)
 
 // a list of all games we have stored up
 let games = []
+
+// and a set of all qr codes to make sure we dont record data twice
+let codes = new Set()
 
 // what should we do when we get a successful qr code?
 function onData(data) {
     // the game data is stored as csv so lets split it apart
     let game = data.split(",")
 
-    // 
-    uploadMatch(game)
-}
+    console.log(game)
 
-function getGameRow(game) {
-    return 0
+    uploadMatch(game)
 }
 
 // what should we do when we sign in
@@ -109,13 +120,15 @@ function onSignout() {
 
 // upload a match to sheets
 function uploadMatch(game) {
-    let collumn = getGameRow(game)
     let start = "A"
-    let end = String.fromCharCode(start.charCodeAt(0) + game.length)
-    return gapi.client.sheets.spreadsheets.values.update({
+    let end = String.fromCharCode(start.charCodeAt(0) + game.length - 1)
+
+    //see: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
+
+    return gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: "1Nc7NNZmOd75HYn5kJ6SyO9mh1Uxw6zCXJV_UwfEhpSo",
-        range: `Sheet1!${start}${collumn}:${end}${collumn}`,
+        range: `Sheet1!${start}${1}:${end}${10}`,
         valueInputOption: "USER_ENTERED",
-        resource: {values: [["blablabla7"]]}
-    })
+        resource: {values: [game]}
+    }).then(console.log).catch(console.log)
 }
