@@ -1,8 +1,10 @@
 // even how offten should we scan? (in ms)
 const scanInterval = 10
 
-// get this from url of spreadsheet we want to edit
-const sheetId = "1Nc7NNZmOd75HYn5kJ6SyO9mh1Uxw6zCXJV_UwfEhpSo"
+// get sheetId from url param 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const sheetId = urlParams.get("id");
 
 // what table should we edit in the sheet
 const tableName = "Sheet1"
