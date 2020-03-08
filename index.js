@@ -7,8 +7,8 @@ gapi.load('client:auth2', () => gapi.client.init({
     apiKey, clientId,
     // wtf is this. I sure dont know. Dont touch it unless you do.
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-    // ask for permission for google sheets. readonly allows you to edit.
-    scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
+    // ask for permission for google sheets.
+    scope: "https://www.googleapis.com/auth/spreadsheets"
 }).then(() => {
     // set up the sign in  and out buttons
     document.getElementById('signin_button').onclick = () => gapi.auth2.getAuthInstance().signIn()
