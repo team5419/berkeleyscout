@@ -138,6 +138,7 @@ function onData(data) {
     // lets just immidatly append the data to the sheets
     appendGame(game)
 
-    $("#data").append(```<tr>${game}</tr>```)
+    document.getElementById("data").innerHTML = `<tr> ${game} </tr>`
+
     console.log(data)
 }
