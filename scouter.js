@@ -166,10 +166,10 @@ $('#form').submit((e)=>{
             $(`#checkbox${m+1}`).prop("checked", false);
         }
         for(let j in [...Array(4)]){
-            match.push(inputs[i + 4].value);
-            tr.append($('<td></td>').text(inputs[i + 4].value).addClass('dataCell'));
+            match.push(inputs[j + 4].value);
+            tr.append($('<td></td>').text(inputs[j + 4].value).addClass('dataCell'));
             $('#data tbody').append(tr);
-            inputs[i + 4].value = 0;
+            inputs[j + 4].value = 0;
         }
         match.push($("#primaryPosition").text());
         tr.append($('<td></td>').text($("#primaryPosition").text()).addClass('dataCell'));
