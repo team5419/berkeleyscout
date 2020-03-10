@@ -165,11 +165,11 @@ $('#form').submit((e)=>{
         for(let m = 0; m < 3; m++){
             $(`#checkbox${m+1}`).prop("checked", false);
         }
-        for(let j in [...Array(4)]){
-            match.push(inputs[j + 4].value);
-            tr.append($('<td></td>').text(inputs[j + 4].value).addClass('dataCell'));
+        for(let j = 4; j < 8; j++){
+            match.push(inputs[j].value);
+            tr.append($('<td></td>').text(inputs[j].value).addClass('dataCell'));
             $('#data tbody').append(tr);
-            inputs[j + 4].value = 0;
+            inputs[j].value = 0;
         }
         match.push($("#primaryPosition").text());
         tr.append($('<td></td>').text($("#primaryPosition").text()).addClass('dataCell'));
