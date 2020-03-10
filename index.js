@@ -118,7 +118,7 @@ setInterval(() => {
     let data = scan()
 
     // nothing was found, lets bounce
-    if (data == undefined || data == null) return
+    if (data == undefined || data == null || data.data == "") return
 
     // weve allready scaned this data, is no good
     if ( codes.has(data) ) return
