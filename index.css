@@ -1,27 +1,16 @@
-#color {
-    width: 30%;
-    height: 100px;
-    
-    position: absolute;
-    top: 90%;
-    left: 73%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    vertical-align: middle;
-
-    border-radius: 25px !important;
-}
-
-#stream, #canvas {
-    position: absolute;
-    top: 42%;
-    left: 65%;
-    transform: translate(-30%, -50%);
-}
-
 #data-container {
-    width: 50%;
+    overflow-y: auto;
 }
 
+.col-sm {
+    align-items: center !important;
+    text-align: center !important;
+}
 
+.jumbotron {
+    padding: 2rem;
+}
 
+body {
+    overflow: hidden;
+}

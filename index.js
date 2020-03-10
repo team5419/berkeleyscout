@@ -137,6 +137,11 @@ function onData(data) {
     
     let game = data.split(";")
 
+    if (game[2] == undefined) {
+        console.log(`game[0] is ${game[0]}`)
+        return
+    }
+
     $("#data").append(`
         <tr>
             <th scope="row">${game[2]}</th>                        
@@ -148,9 +153,6 @@ function onData(data) {
             <td>Default</td>
         </tr>
     `)
-
-
-    if (!game[0]) return
 
     $("#color").attr("style", "background-color: green")
     $("#status").text("SCANNED")
