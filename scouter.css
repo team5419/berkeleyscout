@@ -1,0 +1,241 @@
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.arrow-right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+  
+.arrow-left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+#form h3{
+    width: 100%;
+}
+.inputs{
+    height: fit-content;
+    width: fit-content !important;
+    max-width: 25%;
+    padding-left: 5px;
+}
+.inputs input{
+    min-width: 50px;
+    margin: 2px 0;
+}
+.inputs>div{
+    border-top: 2px #6d6d6d ridge;
+    padding-top: 4px;
+}
+h3{
+    display: inline-block;
+    white-space: nowrap;
+}
+h4{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+
+#form{
+    width: 100%;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.form-control{
+    min-width: 50px;
+}
+.btn-control{
+    flex-basis: 100%;
+    text-align: center;
+}
+.btn-control button, .btn-control input{
+    display: inline-block;
+    width: 20%;
+    height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: none;
+    min-width: fit-content;
+}
+.inputs:first-child input:not(#short){
+    display: inline-block !important;
+    width: 100px !important;
+}
+@media only screen and (max-width: 1024px) {
+    #form, #form .form-group{
+        display: block;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        flex-basis: 100%;
+        width: 50%;
+    }
+
+    .table-section{
+        display: inline-block;
+    }
+    .btn-control button, .btn-control input{
+        display: inline-block;
+        width: 20%;
+        height: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        word-wrap: none;
+        min-width: 100vw;
+    }
+    .btn-lg {
+        display: inline-block;
+        width: 5%;
+        height: 45px;
+        min-width: 12vw;
+    }
+}  
+label{
+    float: left;
+    margin-right: 5px;
+}
+#qrcode{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+#form .btn{
+    width: 90%;
+    text-align: center;
+    margin-left: 5px;
+    font-family: monospace;
+    font-size: 17px;
+    padding: 4px 8px;
+}
+
+#dataModal .modal-body{
+    overflow-x: scroll;
+}
+
+
+
+#data {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 50px;
+}
+
+#data td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#data tr:nth-child(even){background-color: #f2f2f2;}
+
+#data tr:hover {background-color: #ddd;}
+
+#data th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #6d6d6d;
+    color: white;
+    white-space: nowrap;
+}
+#scanDialog{
+    width: fit-content !important;
+}
+#dataModal .modal-dialog{
+    width: 90vw;
+    max-width: 90vw;
+}
+#matchName{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#qrTitle{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+#qrTitle .btn{
+    padding-top: 3px;
+}
+textarea{
+    display: inline-block;
+    width: max-content !important;
+}
+#data .delMatch{
+    position: sticky;
+    text-align: center;
+    padding: 0;
+    border: none;
+    position: fixed;
+}
+#data .dataCell{
+    border: none;
+}
+#data .delMatch button{
+    width: 40px;
+    height: 40px;
+}
+.custom-handle {
+    width: 1.5em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+
+.slider-selection {
+	background: #BABABA;
+}
+
+.dropdown-menu {
+    color: white;
+}
+
+#autoCardDiv {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#teleopCardDiv{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card-body {
+    padding: 20px;
+} 
+
+td {
+    max-width: fit-content;
+    white-space: nowrap;
+}
+
+/* .minus {
+    width: 80px;
+    max-width: fit-content;
+} */
+
+/* 
+#staticBox {
+
+}
+
+
+#headerTemp {
+    white-space: nowrap;
+}
+
