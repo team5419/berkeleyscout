@@ -112,7 +112,7 @@ function scan() {
 // scan the image repeatedly
 setInterval(() => {
     // we dont even want to scan if were not logged in
-    if (!isSignedIn) return
+    // if (!isSignedIn) return
 
     // get the data from the scan
     let data = scan()
@@ -133,12 +133,30 @@ setInterval(() => {
 // what should we do when we get a successful qr code?
 function onData(data) {
     // the game data is stored as csv so lets split it apart
-    let game = data.split(",")
+    console.log("scanned, data is: " + data)
+    
+    let game = data.split(";")
+
+    $("#data").append(`
+        <tr>
+            <th scope="row">${game[2]}</th>                        
+            <td>${game[0]}</td>
+            <td>${game[1]}</td>
+            <td>${(game[4])? "Yes": "No"}</td>
+            <td>${(game[5])? "Yes": "No"}</td>
+            <td>${(game[6])? "Yes": "No"}</td>
+            <td>Default</td>
+        </tr>
+    `)
+
+
+    if (!game[0]) return
+
+    $("#color").attr("style", "background-color: green")
+    $("#status").text("SCANNED")
+    setTimeout(() => {$("#color").attr("style", "background-color: red"); $("#status").text("Waiting for scan...")}, 1000)
+    console.log("index 0 is: " + game[0])
 
     // lets just immidatly append the data to the sheets
     appendGame(game)
-
-    document.getElementById("data").innerHTML = `<tr> ${game} </tr>`
-
-    console.log(data)
 }
