@@ -53,7 +53,7 @@ function onSignout() {
 // upload a match to sheets
 function appendGame(game) {
     // figure out the letter for the last character in the 
-    let endRow = String.fromCharCode(startRow.charCodeAt(0) + game.length - 1)
+    let endCol = String.fromCharCode(startCol.charCodeAt(0) + game.length - 1)
 
     // append the data to the first availiable spot in range
     // see: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
@@ -61,7 +61,7 @@ function appendGame(game) {
         // get this from url of spreadsheet we want to edit
         spreadsheetId: sheetId,
         // get the range in witch matches can be uploaded
-        range: `${tableName}!${startRow}1:${endRow}1`,
+        range: `${tableName}!${startCol}2:${endCol}2`,
         // make so that it parses input data correctly
         valueInputOption: "USER_ENTERED",
         // 2d array of the data we want to send over
