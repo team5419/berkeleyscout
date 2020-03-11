@@ -61,7 +61,7 @@ function appendGame(game) {
         // get this from url of spreadsheet we want to edit
         spreadsheetId: sheetId,
         // get the range in witch matches can be uploaded
-        range: `${tableName}!${startRow}$1:${endRow}$1`,
+        range: `${tableName}!${startRow}1:${endRow}1`,
         // make so that it parses input data correctly
         valueInputOption: "USER_ENTERED",
         // 2d array of the data we want to send over
@@ -147,10 +147,10 @@ function onData(data) {
             <th scope="row">${game[2]}</th>                        
             <td>${game[0]}</td>
             <td>${game[1]}</td>
-            <td>${(game[4])? "Yes": "No"}</td>
-            <td>${(game[5])? "Yes": "No"}</td>
-            <td>${(game[6])? "Yes": "No"}</td>
-            <td>Default</td>
+            <td>${(game[4] == "true")? "Yes": "No"}</td>
+            <td>${(game[5] == "true")? "Yes": "No"}</td>
+            <td>${(game[6] == "true")? "Yes": "No"}</td>
+            <td>${game[17]}</td>
         </tr>
     `)
 
