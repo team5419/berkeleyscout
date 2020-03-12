@@ -135,9 +135,9 @@ function changeQR(dir){
 }
 
 $('#form h3').click(function() {
-    $(this).width($(this).next().width())
-    $(this).next().slideToggle(500)
-})
+    $(this).width($(this).next().width());
+    $(this).next().slideToggle(500);
+});
 
 $('#form').submit((e)=>{ 
     console.log("sumbmitted");
