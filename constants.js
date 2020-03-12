@@ -7,7 +7,7 @@ const urlParams = new URLSearchParams(queryString);
 const sheetId = urlParams.get("id");
 
 // what table should we edit in the sheet
-const tableName = "datainput"
+const tableName = "DATA_INPUT"
 
 // what row should we start append to. "A" means its glued to the side
 const startCol = "A"
