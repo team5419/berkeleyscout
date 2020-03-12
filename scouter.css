@@ -119,6 +119,7 @@ label{
     font-family: monospace;
     font-size: 17px;
     padding: 4px 8px;
+    background-color:#DDDDDD;
 }
 
 #dataModal .modal-body{

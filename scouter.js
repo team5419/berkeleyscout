@@ -179,6 +179,7 @@ $('#form').submit((e)=>{
         match.push(climbPosition);
         tr.append($('<td></td>').text(climbPosition).addClass('dataCell'));
         match.push($('#comments').val())
+        match.push(inputs[2] + "-" + inputs[3]);
         $('#comments').val('')
         matches.push(match);
         QRindex = matches.length-1;
