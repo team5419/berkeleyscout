@@ -54,7 +54,8 @@ function onSignout() {
 function appendGame(game) {
     // figure out the letter for the last character in the 
     let endCol = String.fromCharCode(startCol.charCodeAt(0) + game.length - 1)
-
+    // add game to array for resending data
+    games.push(game)
     // append the data to the first availiable spot in range
     // see: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
     return gapi.client.sheets.spreadsheets.values.append({
@@ -162,3 +163,28 @@ function onData(data) {
     // lets just immidatly append the data to the sheets
     appendGame(game)
 }
+
+function resendData() {
+    // append the data to the first availiable spot in range
+    // see: https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append
+    return gapi.client.sheets.spreadsheets.values.append({
+        // get this from url of spreadsheet we want to edit
+        spreadsheetId: sheetId,
+        // get the range in witch matches can be uploaded
+        range: `${tableName}!${startCol}2:${endCol}2`,
+        // make so that it parses input data correctly
+        valueInputOption: "USER_ENTERED",
+        // 2d array of the data we want to send over
+        resource: {values: [games]}
+    }).then(console.log).catch(console.log)
+}
+
+
+
+
+
+
+
+$("#send_data").click(() => {
+    resendData()
+})

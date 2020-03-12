@@ -55,7 +55,10 @@
 
                     <div id="login_buttons" class="btn-group">
                         <a class="btn btn-primary" href="./setup.html" role="button">Setup</a>
-                        <button type="button" class="btn btn-primary" id="signin_button" style="display: none">Sign In</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Resend Data 
+                          </button>                        
+                          <button type="button" class="btn btn-primary" id="signin_button" style="display: none">Sign In</button>
                         <button type="button" class="btn btn-primary" id="signout_button" style="display: none">Sign Out</button>
                     </div>
 
@@ -76,6 +79,30 @@
         </div>
     </div>
 
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Resend Data?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to resend data to the spread sheet? This could break everything and cause Andy to have a mental breakdown.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="send_data">Send data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     <!-- wait until everything else is loaded then load the logging script -->
     <!-- this makes sure that the google api is ready for are code -->
     <script async defer src="index.js"></script>
