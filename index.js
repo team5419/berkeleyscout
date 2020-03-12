@@ -180,11 +180,6 @@ function resendData() {
 }
 
 
-
-
-
-
-
 $("#send_data").click(() => {
     resendData()
 })
