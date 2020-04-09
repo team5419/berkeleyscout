@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Monkey Scout</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="./jquery-ui.css">
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" /> -->
+  
+
+  <link rel="stylesheet" href="./scouter.css">
+</head>
+<body>
+    <div id="staticBox"></div>
+      <form id='form'>
+        <div>
+          <div class="inputs form-group">
+            <h3 id="headerTemp">Pre Match</h3>
+            <div>
+              <table>
+                <tr><td><label>Scout's Name</label></td><td><input class="form-control data" required="false" name="sName"></td></tr>
+                <tr><td><label>Scout's Number</label></td><td><input class="form-control data" required="false" type="number" name="sNum"></td></tr>
+                <tr><td><label>Match Number</label></td><td><input value="1" class="form-control data" required="true" type="number" id="matchNum" min="1"></td></tr>
+                <tr><td><label>Team Number</label></td><td><input class="form-control data" required="false" type="number" id="teamNum" min="1"></td><td><button data-toggle="modal" data-target="#apiModal" type="button" class="btn btn-light"><img src='./assets/settings.png' height="29px"></button></td></tr>
+              </table>
+            </div>
+        </div>
+      </div>
+      <div class="inputs form-group">
+        <h3>Autonomous</h3>
+        <div>
+          <div class="table-section">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checkbox1" value="false">
+              <label class="custom-control-label" for="checkbox1">Crossed Init Line</label>
+            </div>
+            <table>
+              <tr><td><h5>Top</h5></td></tr>
+              <tr><td><label>Shot Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr>
+              <tr><td><label>Scored Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr>
+              <tr><td><h5>Bottom</h5></td></tr>
+              <tr><td><label>Shot Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr>
+              <tr><td><label>Scored Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr> 
+          </table>
+          </div>
+        </div>
+      </div>
+      <div class="inputs form-group">
+        <h3>Teleop</h3>
+        <div>
+          <div class="table-section">
+            <h4>Spinner</h4>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checkbox2" value="false">
+              <label class="custom-control-label" for="checkbox2">Rotation Control</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checkbox3" value="false">
+              <label class="custom-control-label" for="checkbox3">Position Control</label>
+            </div>
+            <table>
+              <tr><td><h5>Top</h5></td></tr>
+              <tr><td><label>Shot Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr>
+              <tr><td><label>Scored Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr>
+              <tr><td><h5>Bottom</h5></td></tr>
+              <tr><td><label>Shot Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr>
+              <tr><td><label>Scored Balls</label></td><td><button type="button" class="minusFive btn btn-lg">-5</button></td><td><button type="button" class="minus btn btn-lg">-</button></td><td><input class="form-control data" value="0" required="true" type="number" min="0"></td><td><button type="button" class="plus btn btn-lg">+</button></td><td><button type="button" class="plusFive btn btn-lg">+5</button></td></tr> 
+            </table>
+            
+            <h4>Climb</h4>
+            <div>
+              <div class="btn-group" role="group" id="climbButtons">
+                <button type="button" class="btn btn-secondary climb" value="Outer" onclick="climbPosition = $(this).val()">Outer</button>
+                <button type="button" class="btn btn-secondary climb" value="Center" onclick="climbPosition = $(this).val()">Center</button>
+                <button type="button" class="btn btn-secondary climb" value="Level" onclick="climbPosition = $(this).val()">Level</button>
+                <button type="button" class="btn btn-secondary climb" value="Ground" onclick="climbPosition = $(this).val()">Ground</button>
+              </div> 
+            </div>
+            <h4>Shooting Positions</h4>
+          <div class="btn-group">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="primaryPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Primary
+              </button>
+              <div class="dropdown-menu" aria-labelledby="primaryPosition">
+                <button class="dropdown-item primary" type="button" onclick="$('#primaryPosition').text($(this).text())">Alliance Init Line</button>
+                <button class="dropdown-item primary" type="button" onclick="$('#primaryPosition').text($(this).text())">Behind DJ</button>
+                <button class="dropdown-item primary" type="button" onclick="$('#primaryPosition').text($(this).text())">In Front DJ</button>
+                <button class="dropdown-item primary" type="button" onclick="$('#primaryPosition').text($(this).text())">Opponent Init Line</button>
+                <button class="dropdown-item primary" type="button"onclick=" $('#primaryPosition').text($(this).text())">Behind RZ Zone</button>
+                <button class="dropdown-item primary" type="button" onclick="$('#primaryPosition').text($(this).text())">Other (Comment)</button>
+              </div>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="secondaryPosition" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Secondary
+              </button>
+              <div class="dropdown-menu" aria-labelledby="secondaryPosition">
+                <button class="dropdown-item secondary"  type="button" onclick="$('#secondaryPosition').text($(this).text())">Alliance Init Line</button>
+                <button class="dropdown-item secondary"  type="button" onclick="$('#secondaryPosition').text($(this).text())">Behind DJ</button>
+                <button class="dropdown-item secondary"  type="button" onclick="$('#secondaryPosition').text($(this).text())">In Front DJ</button>
+                <button class="dropdown-item secondary"  type="button" onclick="$('#secondaryPosition').text($(this).text())">Opponent Init Line</button>
+                <button class="dropdown-item secondary"  type="button" onclick="$('#secondaryPosition').text($(this).text())">Behind RZ Zone</button>
+                <button class="dropdown-item secondary"  type="button" onclick="$('#secondaryPosition').text($(this).text())">Other (Comment)</button>
+
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="inputs form-group">
+        
+        <h3>Comments</h3>
+        <div>
+          <textarea class='form-control data' id="comments" cols="30" rows="5" maxlength="100"></textarea> 
+        </div>
+      </div>
+      <div class="btn-control form-group btn-group" role="group">
+        <input class="form-control btn-secondary" required="true" id="submit" type="submit">
+        <button type="button" class="form-control btn-secondary" onclick="exportToCSV(prompt('File Name') + '.csv')">Download</button>
+        <button id='QRbutton' type="button" class="form-control btn-secondary" data-toggle="modal" data-target="#qrModal" onclick="generateQR()">Generate QR</button>
+        <button type="button" class="form-control btn-secondary" data-toggle="modal" data-target="#dataModal">Manage Data</button>
+      </div>
+    </form>
+
+
+
+
+
+
+<!-- when generate QR clicked-->
+    <div> 
+      <div class="modal fade" id="qrModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">QR Code</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <h3 id="matchNumber">
+                <div id="qrTitle">
+                  <button onclick="changeQR(-1)" class="btn QRbtn"><i class="arrow-left"></i></button>
+                  <span id="matchName"></span>
+                  <button onclick="changeQR(1)" class="btn btn-arrow-right QRbtn"><i class="arrow-right"></i></button>
+                </div>
+              </h3>
+              <div id="qrcode">No Data</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- when manage data clicked-->
+    <div>
+      <div class="modal fade" id="dataModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">View/Edit data</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <table id="data" class="table">
+                <thead>
+                  <tr>
+                    <th>Remove</th>
+                    <th>Scout's Name</th><th>Scout's Number</th><th>Match Number</th><th>Team Number</th>
+                    <th>Hatch 1</th><th>Hatch 2</th><th>Hatch 3</th><th>Hatch ship</th>
+                    <th>Cargo 1</th><th>Cargo 2</th><th>Cargo 3</th><th>Cargo ship</th>
+                    <th>Hatch 1</th><th>Hatch 2</th><th>Hatch 3</th><th>Hatch ship</th>
+                    <th>Cargo 1</th><th>Cargo 2</th><th>Cargo 3</th><th>Cargo ship</th>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button id="dataSave" disabled="true" type="button" class="btn btn-success" data-dismiss="modal" onclick="save()">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- when setting ico clicked-->
+    <div>
+      <div class="modal fade" id="apiModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">The Blue Alliance</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <form id="apiForm" class="form">
+                <label>Event key</label>
+                <input class="form-control" value='casj'>
+                <label>Posistion</label>
+                <select id='pos' class="form-control">
+                  <option value='0'>Red 1</option>
+                  <option value='1'>Red 2</option>
+                  <option value='2'>Red 3</option>
+                  <option value='3'>Blue 1</option>
+                  <option value='4'>Blue 2</option>
+                  <option value='5'>Blue 3</option>
+                </select>
+                <input id="toogleAPI" type="checkbox" checked>
+                <label class="form-check-label" for="toogleAPI">Enable automatic team selection</label>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button id="apiSave" type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./qrcode.min.js"></script>
+    <script src="./scouter.js"></script>
+</body>
+</html>
