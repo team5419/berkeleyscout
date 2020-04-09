@@ -1,0 +1,13 @@
+#data-container {
+    overflow-y: auto;
+}
+
+.col-sm {
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.jumbotron {
+    padding: 1rem;
+}
+

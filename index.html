@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scanner</title>
+    <meta charset="utf-8" />
+
+    <!-- import libraries were gonna use -->
+    <script crossorigin="anonymous" src="https://apis.google.com/js/api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script crossorigin="anonymous" src="lib/qr.js"></script>
+
+    <!-- load the configuration for sheets and qr -->
+    <script src="constants.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!--Add buttons to initiate auth sequence and sign out-->
+        <div class="row">
+            <div class="col-sm">
+
+                <div id="data-container">
+                    <table id="data" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Team</th>
+                                <th scope="col">Init Line</th>
+                                <th scope="col">Rotation</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Climb</th>
+                            </tr>
+                        </thead>
+                        <tbody id="insert">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-sm" id="video_and_login">
+                <div class="main">
+
+                    <div id="login_buttons" class="btn-group">
+                        <a class="btn btn-primary" href="./setup.html" role="button">Setup</a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Resend Data 
+                          </button>                        
+                          <button type="button" class="btn btn-primary" id="signin_button" style="display: none">Sign In</button>
+                        <button type="button" class="btn btn-primary" id="signout_button" style="display: none">Sign Out</button>
+                    </div>
+
+
+
+
+                    <!-- shows ther camera view and add hiddent canvas for qr scanner-->
+                    <div id="video">
+                        <video id="stream" width="560" height="560"></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                    </div>
+
+                    <div class="jumbotron" id="color" style="background-color: red">
+                        <h1 class="display-5" id="status">Waiting for scan...</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Resend Data?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to resend data to the spread sheet? This could break everything and cause Andy to have a mental breakdown.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="send_data">Send data</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    <!-- wait until everything else is loaded then load the logging script -->
+    <!-- this makes sure that the google api is ready for are code -->
+    <script async defer src="index.js"></script>
+</body>
+
+</html>
